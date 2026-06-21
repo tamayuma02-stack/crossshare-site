@@ -36,7 +36,9 @@
     .btn-primary { background: #fff; color: var(--primary); }
     .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.7); }
     .platform-chips { margin-top: 32px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .chip { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 100px; padding: 4px 14px; font-size: .85rem; }
+    .chip { border-radius: 100px; padding: 4px 14px; font-size: .85rem; }
+    .chip.available { background: rgba(255,255,255,.25); border: 1px solid rgba(255,255,255,.6); font-weight: 600; }
+    .chip.soon { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.55); font-size: .8rem; }
 
     /* Section */
     section { padding: 72px 24px; }
@@ -109,16 +111,16 @@
 
 <section class="hero">
   <h1>デバイス間の共有を<br>もっとかんたんに</h1>
-  <p>Wi-Fi があればケーブル不要。スマホ・Windows・Mac 間でファイルやクリップボードを素早く共有できます。</p>
+  <p>Wi-Fi があればケーブル不要。スマホと Windows 間でファイルやクリップボードを素早く共有できます。</p>
   <div class="hero-badges">
     <a href="#download" class="btn btn-primary">無料でダウンロード</a>
     <a href="#features" class="btn btn-outline">機能を見る</a>
   </div>
   <div class="platform-chips">
-    <span class="chip">Android</span>
-    <span class="chip">Windows</span>
-    <span class="chip">iOS</span>
-    <span class="chip">Mac</span>
+    <span class="chip available">✓ Android</span>
+    <span class="chip available">✓ Windows</span>
+    <span class="chip soon">iOS（近日公開）</span>
+    <span class="chip soon">Mac（近日公開）</span>
   </div>
 </section>
 
@@ -233,7 +235,7 @@
 <section id="download">
   <div class="section-inner">
     <h2>ダウンロード</h2>
-    <p class="section-sub">すべてのプラットフォームで無料でお使いいただけます。</p>
+    <p class="section-sub">Android・Windows で利用できます。iOS・Mac は近日公開予定です。</p>
     <div class="download-grid">
       <div class="dl-card">
         <div class="icon">🤖</div>

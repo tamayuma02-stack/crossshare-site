@@ -109,19 +109,23 @@
     .safe-steps li { color: rgba(255,255,255,.85); font-size: .86rem; display: flex; gap: 8px; align-items: flex-start; }
     .safe-steps li strong { color: #fff; }
 
-    /* Screenshots */
+    /* Screenshots carousel */
     #screens { background: #fff; }
-    .shots-scroll { display: flex; gap: 32px; overflow-x: auto; padding-bottom: 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-    .shots-scroll::-webkit-scrollbar { height: 6px; }
-    .shots-scroll::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
-    .shots-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-    .shots-platform { flex-shrink: 0; scroll-snap-align: start; display: flex; flex-direction: column; gap: 16px; }
-    .shots-platform-label { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; padding-bottom: 6px; border-bottom: 2px solid var(--border); margin-bottom: 4px; }
-    .shot { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
-    .shot img { width: 100%; display: block; }
-    .shots-platform.android .shot { width: 200px; }
-    .shots-platform.windows .shot { width: 400px; }
-    .shot-cap { padding: 12px 14px; font-size: .86rem; color: var(--text); font-weight: 600; text-align: center; }
+    .carousel-wrap { position: relative; }
+    .carousel { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: 16px; }
+    .carousel::-webkit-scrollbar { display: none; }
+    .carousel-slide { flex-shrink: 0; width: 100%; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 32px 24px 28px; background: var(--card); }
+    .carousel-slide img { max-height: 460px; width: auto; max-width: 100%; display: block; border-radius: 10px; }
+    .carousel-badge { font-size: .75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .08em; background: #eff6ff; border-radius: 100px; padding: 3px 12px; border: 1px solid #bfdbfe; }
+    .carousel-cap { font-size: .9rem; font-weight: 600; color: var(--text); }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,.1); cursor: pointer; font-size: 1.5rem; color: var(--text); display: flex; align-items: center; justify-content: center; z-index: 2; transition: box-shadow .15s; }
+    .carousel-btn:hover { box-shadow: 0 4px 14px rgba(0,0,0,.14); }
+    .carousel-btn.prev { left: -20px; }
+    .carousel-btn.next { right: -20px; }
+    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+    .carousel-dots button { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
+    .carousel-dots button.active { background: var(--primary); transform: scale(1.3); }
+    @media (max-width: 600px) { .carousel-btn { display: none; } }
 
     /* FAQ */
     #faq { background: var(--bg); }
@@ -219,25 +223,31 @@
   <div class="section-inner">
     <h2>実際の画面</h2>
     <p class="section-sub">スマホでコピーした内容が、PC にそのまま届きます。</p>
-    <div class="shots-scroll">
-      <div class="shots-platform android">
-        <div class="shots-platform-label">Android</div>
-        <div class="shot">
+    <div class="carousel-wrap">
+      <button class="carousel-btn prev" aria-label="前へ">&#8249;</button>
+      <div class="carousel" id="screensCarousel">
+        <div class="carousel-slide">
+          <span class="carousel-badge">Android</span>
           <img src="img/screen-pairing.svg" alt="スマホ：ペアリング画面" loading="lazy">
-          <div class="shot-cap">ペアリング画面</div>
+          <div class="carousel-cap">ペアリング画面</div>
         </div>
-        <div class="shot">
+        <div class="carousel-slide">
+          <span class="carousel-badge">Android</span>
           <img src="img/screen-clipboard.svg" alt="クリップボード自動同期" loading="lazy">
-          <div class="shot-cap">クリップボード自動同期（プレミアム）</div>
+          <div class="carousel-cap">クリップボード自動同期（プレミアム）</div>
         </div>
-      </div>
-      <div class="shots-platform windows">
-        <div class="shots-platform-label">Windows</div>
-        <div class="shot">
+        <div class="carousel-slide">
+          <span class="carousel-badge">Windows</span>
           <img src="img/screen-windows.svg" alt="Windows：ファイル受信" loading="lazy">
-          <div class="shot-cap">ファイル受信 &amp; クリップボード</div>
+          <div class="carousel-cap">ファイル受信 &amp; クリップボード</div>
         </div>
       </div>
+      <button class="carousel-btn next" aria-label="次へ">&#8250;</button>
+    </div>
+    <div class="carousel-dots" id="screensDots">
+      <button class="active" aria-label="1枚目"></button>
+      <button aria-label="2枚目"></button>
+      <button aria-label="3枚目"></button>
     </div>
   </div>
 </section>
@@ -444,5 +454,30 @@
   <p style="margin-top:8px; font-size:.8rem;">運営者: CrossShare（個人開発）</p>
 </footer>
 
+<script>
+  (function () {
+    var car = document.getElementById('screensCarousel');
+    var dots = document.querySelectorAll('#screensDots button');
+    function goTo(i) {
+      car.scrollTo({ left: car.clientWidth * i, behavior: 'smooth' });
+    }
+    function currentIndex() {
+      return Math.round(car.scrollLeft / car.clientWidth);
+    }
+    document.querySelector('.carousel-btn.prev').addEventListener('click', function () {
+      goTo(Math.max(0, currentIndex() - 1));
+    });
+    document.querySelector('.carousel-btn.next').addEventListener('click', function () {
+      goTo(Math.min(dots.length - 1, currentIndex() + 1));
+    });
+    car.addEventListener('scroll', function () {
+      var i = currentIndex();
+      dots.forEach(function (d, j) { d.classList.toggle('active', i === j); });
+    }, { passive: true });
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { goTo(i); });
+    });
+  })();
+</script>
 </body>
 </html>

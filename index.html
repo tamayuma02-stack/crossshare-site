@@ -111,14 +111,17 @@
 
     /* Screenshots */
     #screens { background: #fff; }
-    .shots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .shots-scroll { display: flex; gap: 32px; overflow-x: auto; padding-bottom: 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .shots-scroll::-webkit-scrollbar { height: 6px; }
+    .shots-scroll::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
+    .shots-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .shots-platform { flex-shrink: 0; scroll-snap-align: start; display: flex; flex-direction: column; gap: 16px; }
+    .shots-platform-label { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; padding-bottom: 6px; border-bottom: 2px solid var(--border); margin-bottom: 4px; }
     .shot { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
     .shot img { width: 100%; display: block; }
-    .shot:last-child { grid-column: 1 / -1; }
-    .shot:last-child img { max-height: 280px; object-fit: contain; background: #1e293b; }
-    .shot-ph { aspect-ratio: 9 / 16; background: linear-gradient(135deg, #eff6ff, #f0f9ff); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted); border-bottom: 1px dashed var(--border); }
-    .shot-ph .ph-icon { font-size: 2.4rem; }
-    .shot-cap { padding: 14px 16px; font-size: .88rem; color: var(--text); font-weight: 600; text-align: center; }
+    .shots-platform.android .shot { width: 200px; }
+    .shots-platform.windows .shot { width: 400px; }
+    .shot-cap { padding: 12px 14px; font-size: .86rem; color: var(--text); font-weight: 600; text-align: center; }
 
     /* FAQ */
     #faq { background: var(--bg); }
@@ -216,18 +219,24 @@
   <div class="section-inner">
     <h2>実際の画面</h2>
     <p class="section-sub">スマホでコピーした内容が、PC にそのまま届きます。</p>
-    <div class="shots-grid">
-      <div class="shot">
-        <img src="img/screen-pairing.svg" alt="スマホ：ペアリング画面" loading="lazy">
-        <div class="shot-cap">スマホ：ペアリング画面</div>
+    <div class="shots-scroll">
+      <div class="shots-platform android">
+        <div class="shots-platform-label">Android</div>
+        <div class="shot">
+          <img src="img/screen-pairing.svg" alt="スマホ：ペアリング画面" loading="lazy">
+          <div class="shot-cap">ペアリング画面</div>
+        </div>
+        <div class="shot">
+          <img src="img/screen-clipboard.svg" alt="クリップボード自動同期" loading="lazy">
+          <div class="shot-cap">クリップボード自動同期（プレミアム）</div>
+        </div>
       </div>
-      <div class="shot">
-        <img src="img/screen-clipboard.svg" alt="クリップボード自動同期" loading="lazy">
-        <div class="shot-cap">クリップボード自動同期（プレミアム）</div>
-      </div>
-      <div class="shot">
-        <img src="img/screen-windows.svg" alt="Windows：ファイル受信" loading="lazy">
-        <div class="shot-cap">Windows：ファイル受信 &amp; クリップボード</div>
+      <div class="shots-platform windows">
+        <div class="shots-platform-label">Windows</div>
+        <div class="shot">
+          <img src="img/screen-windows.svg" alt="Windows：ファイル受信" loading="lazy">
+          <div class="shot-cap">ファイル受信 &amp; クリップボード</div>
+        </div>
       </div>
     </div>
   </div>

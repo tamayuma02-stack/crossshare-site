@@ -51,8 +51,9 @@
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
     .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
     .feature-icon { font-size: 2rem; margin-bottom: 12px; }
-    .feature-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .feature-card h3 { font-size: 1.05rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .feature-card p { color: var(--muted); font-size: .9rem; }
+    .pro-tag { font-size: .68rem; font-weight: 700; background: #eff6ff; color: var(--primary); border: 1px solid #bfdbfe; border-radius: 100px; padding: 2px 8px; }
 
     /* Premium mechanism */
     #premium { background: var(--bg); }
@@ -75,6 +76,7 @@
     .plan-features { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
     .plan-features li { font-size: .9rem; color: var(--muted); display: flex; gap: 8px; }
     .plan-features li::before { content: '✓'; color: var(--primary); font-weight: 700; }
+    .plan-store { margin-top: 16px; font-size: .78rem; font-weight: 600; color: #92400e; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 8px 12px; text-align: center; }
 
     /* How */
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
@@ -94,11 +96,29 @@
     .dl-steps { list-style: none; text-align: left; margin: 0 0 18px; padding: 0; font-size: .82rem; color: rgba(255,255,255,.75); display: flex; flex-direction: column; gap: 6px; counter-reset: dls; }
     .dl-steps li { display: flex; gap: 8px; align-items: flex-start; }
     .dl-steps li::before { counter-increment: dls; content: counter(dls); flex-shrink: 0; width: 18px; height: 18px; background: rgba(255,255,255,.2); border-radius: 50%; font-size: .7rem; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .dl-steps li > span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
     .dl-tag { display: inline-block; font-size: .72rem; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: 100px; padding: 2px 10px; margin-bottom: 14px; color: rgba(255,255,255,.8); }
     .btn-dl { display: inline-block; background: #fff; color: #1e293b; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: .9rem; transition: opacity .2s; }
     .btn-dl:hover { opacity: .85; text-decoration: none; }
     .btn-dl.soon { background: rgba(255,255,255,.2); color: rgba(255,255,255,.6); cursor: default; }
     .btn-dl.soon:hover { opacity: 1; }
+    .safe-box { max-width: 720px; margin: 36px auto 0; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 24px 28px; }
+    .safe-box h3 { color: #fff; font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .safe-box p { color: rgba(255,255,255,.8); font-size: .88rem; margin-bottom: 12px; }
+    .safe-steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .safe-steps li { color: rgba(255,255,255,.85); font-size: .86rem; display: flex; gap: 8px; align-items: flex-start; }
+    .safe-steps li strong { color: #fff; }
+
+    /* Screenshots */
+    #screens { background: #fff; }
+    .shots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .shot { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
+    .shot img { width: 100%; display: block; }
+    .shot:last-child { grid-column: 1 / -1; }
+    .shot:last-child img { max-height: 280px; object-fit: contain; background: #1e293b; }
+    .shot-ph { aspect-ratio: 9 / 16; background: linear-gradient(135deg, #eff6ff, #f0f9ff); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted); border-bottom: 1px dashed var(--border); }
+    .shot-ph .ph-icon { font-size: 2.4rem; }
+    .shot-cap { padding: 14px 16px; font-size: .88rem; color: var(--text); font-weight: 600; text-align: center; }
 
     /* FAQ */
     #faq { background: var(--bg); }
@@ -128,6 +148,7 @@
     <span class="nav-logo">CrossShare</span>
     <div class="nav-links">
       <a href="#features">機能</a>
+      <a href="#screens">画面</a>
       <a href="#premium">プレミアム</a>
       <a href="#plans">プラン</a>
       <a href="#download">ダウンロード</a>
@@ -159,8 +180,8 @@
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">📋</div>
-        <h3>クリップボード自動同期</h3>
-        <p>一方でコピーしたテキストが、つながっている別のデバイスに自動で届きます。</p>
+        <h3>クリップボード自動同期 <span class="pro-tag">プレミアム</span></h3>
+        <p>一方でコピーしたテキストが、つながっている別のデバイスに自動で届きます。（無料プランは手動共有・履歴10件まで）</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📁</div>
@@ -191,6 +212,27 @@
   </div>
 </section>
 
+<section id="screens">
+  <div class="section-inner">
+    <h2>実際の画面</h2>
+    <p class="section-sub">スマホでコピーした内容が、PC にそのまま届きます。</p>
+    <div class="shots-grid">
+      <div class="shot">
+        <img src="img/screen-pairing.svg" alt="スマホ：ペアリング画面" loading="lazy">
+        <div class="shot-cap">スマホ：ペアリング画面</div>
+      </div>
+      <div class="shot">
+        <img src="img/screen-clipboard.svg" alt="クリップボード自動同期" loading="lazy">
+        <div class="shot-cap">クリップボード自動同期（プレミアム）</div>
+      </div>
+      <div class="shot">
+        <img src="img/screen-windows.svg" alt="Windows：ファイル受信" loading="lazy">
+        <div class="shot-cap">Windows：ファイル受信 &amp; クリップボード</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="premium">
   <div class="section-inner">
     <h2>プレミアムは1台分の購入でOK</h2>
@@ -214,7 +256,7 @@
         </div>
       </div>
       <div class="premium-note">
-        ⚠️ プレミアム機能は <strong>購入したスマホと接続している間だけ</strong> 有効です。接続が切れると、購入していないデバイス（Windows など）は無料プランに戻ります。常にプレミアムで使いたいデバイスは、それぞれで購入することもできます。
+        ⚠️ プレミアム機能は <strong>購入したスマホと接続している間だけ</strong> 有効です。接続が切れると、購入していないデバイス（Windows など）は無料プランに戻ります。同じ Wi-Fi に入れば自動で再接続され、プレミアム機能もそのまま再有効化されます（再設定は不要）。
       </div>
     </div>
   </div>
@@ -246,6 +288,19 @@
           <li>広告なし</li>
           <li>接続中の全デバイスがプレミアムに</li>
         </ul>
+        <div class="plan-store">※ 購入は Android 版（Google Play）のみ</div>
+      </div>
+      <div class="plan-card">
+        <h3>プレミアム 年額</h3>
+        <div class="plan-price">¥1,980 <span>/ 年</span></div>
+        <ul class="plan-features">
+          <li>月額の約 34% お得（実質 4 ヶ月分無料）</li>
+          <li>接続台数 無制限</li>
+          <li>クリップボード履歴 無制限</li>
+          <li>クリップボード自動同期</li>
+          <li>広告なし</li>
+        </ul>
+        <div class="plan-store">※ 購入は Android 版（Google Play）のみ</div>
       </div>
       <div class="plan-card">
         <h3>プレミアム 買い切り</h3>
@@ -257,10 +312,11 @@
           <li>広告なし</li>
           <li>接続中の全デバイスがプレミアムに</li>
         </ul>
+        <div class="plan-store">※ 購入は Android 版（Google Play）のみ</div>
       </div>
     </div>
     <p style="text-align:center; margin-top:24px; color:var(--muted); font-size:.9rem;">
-      ※ 年額プラン（¥1,980/年）もあります。購入は <strong>Android 版（Google Play）</strong> で行います。Windows 版では購入できませんが、<a href="#premium">スマホで購入すれば接続中の Windows でもプレミアム機能が使えます</a>。
+      ※ プレミアムの購入は <strong>Android 版（Google Play）</strong> でのみ行えます。Windows 版では購入できませんが、<a href="#premium">スマホで購入すれば接続中の Windows でもプレミアム機能が使えます</a>。
     </p>
   </div>
 </section>
@@ -272,8 +328,8 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>インストール</h3>
-        <p>共有したいデバイスそれぞれに CrossShare をインストールします。</p>
+        <h3>アプリを準備</h3>
+        <p>スマホは Google Play から導入、Windows は ZIP を解凍して <strong>crossshare.exe</strong> を起動するだけ。</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -299,9 +355,9 @@
         <h3>Android</h3>
         <span class="dl-tag">Google Play</span>
         <ul class="dl-steps">
-          <li>Google Play を開く</li>
-          <li>「インストール」をタップ</li>
-          <li>アプリを起動して使用開始</li>
+          <li><span>Google Play を開く</span></li>
+          <li><span>「インストール」をタップ</span></li>
+          <li><span>アプリを起動して使用開始</span></li>
         </ul>
         <a href="https://play.google.com/store/apps/details?id=com.crossshare.crossshare" class="btn-dl">Google Play</a>
       </div>
@@ -310,9 +366,9 @@
         <h3>Windows</h3>
         <span class="dl-tag">インストール不要</span>
         <ul class="dl-steps">
-          <li>ZIP をダウンロード</li>
-          <li>右クリック →「すべて展開」で解凍</li>
-          <li>フォルダ内の <strong>crossshare.exe</strong> をダブルクリックで起動</li>
+          <li><span>ZIP をダウンロード</span></li>
+          <li><span>右クリック →「すべて展開」で解凍</span></li>
+          <li><span>フォルダ内の <strong>crossshare.exe</strong> をダブルクリックで起動</span></li>
         </ul>
         <a href="crossshare-windows-v1.0.0.zip" class="btn-dl" download>ZIP をダウンロード</a>
       </div>
@@ -329,9 +385,15 @@
         <a class="btn-dl soon">近日公開</a>
       </div>
     </div>
-    <p style="text-align:center; margin-top:28px; color:rgba(255,255,255,.6); font-size:.82rem;">
-      ※ Windows 版は初回起動時に「Windows によって PC が保護されました」と表示される場合があります。「詳細情報」→「実行」で起動できます。
-    </p>
+    <div class="safe-box">
+      <h3>🛡️ Windows の警告表示について（安全です）</h3>
+      <p>CrossShare はデータを外部サーバーに送らない <strong>ローカル動作のアプリ</strong>です。Microsoft の有料署名を付けていないため、初回起動時に「Windows によって PC が保護されました」という青い画面が表示されますが、ウイルスではありません。次の手順で起動できます。</p>
+      <ul class="safe-steps">
+        <li>① 青い警告画面の <strong>「詳細情報」</strong> をクリック</li>
+        <li>② 下に表示される <strong>「実行」</strong> ボタンをクリック</li>
+        <li>③ 2 回目以降は警告は表示されません</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -350,7 +412,7 @@
       </details>
       <details>
         <summary>1台買えば他のデバイスもプレミアムになりますか？</summary>
-        <p>はい。スマホで購入すれば、そのスマホと接続している全デバイスが、<strong>接続している間だけ</strong>プレミアムになります。接続が切れると、購入していないデバイスは無料プランに戻ります。各デバイスを常にプレミアムにしたい場合は、それぞれで購入することもできます。</p>
+        <p>はい。スマホで購入すれば、そのスマホと接続している全デバイスが、<strong>接続している間だけ</strong>プレミアムになります。接続が切れると、購入していないデバイスは無料プランに戻ります。ただし同じ Wi-Fi に再接続すれば自動でプレミアムが再有効化されるため、再設定の手間はありません。（iOS・Mac 版の公開後は、各デバイスで個別に購入することもできます。）</p>
       </details>
       <details>
         <summary>インターネット接続は必要ですか？</summary>
@@ -369,7 +431,8 @@
 </section>
 
 <footer>
-  <p>© 2026 CrossShare &nbsp;|&nbsp; <a href="privacy.html">プライバシーポリシー</a></p>
+  <p>© 2026 CrossShare &nbsp;|&nbsp; <a href="privacy.html">プライバシーポリシー</a> &nbsp;|&nbsp; お問い合わせ: <a href="mailto:tamayuma02@gmail.com">tamayuma02@gmail.com</a></p>
+  <p style="margin-top:8px; font-size:.8rem;">運営者: CrossShare（個人開発）</p>
 </footer>
 
 </body>

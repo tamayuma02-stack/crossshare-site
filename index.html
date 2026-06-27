@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CrossShare - デバイス間でかんたん共有</title>
-  <meta name="description" content="CrossShare は Wi-Fi だけでスマホ・PC間のファイルやクリップボードを素早く共有できるアプリです。">
+  <meta name="description" content="CrossShare は iOS・Android・Windows・Mac のあらゆる組み合わせで、Wi-Fi 経由でファイルとクリップボードを即共有できるアプリです。アカウント不要。">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -127,6 +127,21 @@
     .carousel-dots button.active { background: var(--primary); transform: scale(1.3); }
     @media (max-width: 600px) { .carousel-btn { display: none; } }
 
+    /* Plan comparison table */
+    .plan-compare { margin-top: 52px; }
+    .plan-compare-title { text-align: center; font-size: 1rem; font-weight: 600; color: var(--muted); margin-bottom: 20px; }
+    .compare-table-wrap { overflow-x: auto; }
+    .compare-table { width: 100%; max-width: 600px; margin: 0 auto; border-collapse: collapse; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .compare-table th { background: var(--primary); color: #fff; padding: 14px 20px; text-align: center; font-size: .9rem; }
+    .compare-table th:first-child { text-align: left; }
+    .compare-table th.th-premium { background: var(--primary-dark); }
+    .compare-table td { padding: 13px 20px; border-bottom: 1px solid var(--border); font-size: .9rem; color: var(--muted); text-align: center; }
+    .compare-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td.td-premium { background: #eff6ff; color: var(--primary); font-weight: 700; }
+    .compare-table tr:hover td { background: #f8fafc; }
+    .compare-table tr:hover td.td-premium { background: #dbeafe; }
+
     /* FAQ */
     #faq { background: var(--bg); }
     .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
@@ -166,7 +181,7 @@
 
 <section class="hero">
   <h1>デバイス間の共有を<br>もっとかんたんに</h1>
-  <p>Wi-Fi があればケーブル不要。スマホと Windows 間でファイルやクリップボードを素早く共有できます。</p>
+  <p>Wi-Fi があればケーブル不要。iOS・Android・Windows・Mac のどの組み合わせでも、ファイルやクリップボードを素早く共有できます。</p>
   <div class="hero-badges">
     <a href="#download" class="btn btn-primary">無料でダウンロード</a>
     <a href="#features" class="btn btn-outline">機能を見る</a>
@@ -183,7 +198,7 @@
 <section id="features">
   <div class="section-inner">
     <h2>CrossShare でできること</h2>
-    <p class="section-sub">インターネット不要。LAN 内だけで安全・高速に動作します。</p>
+    <p class="section-sub">同じ Wi-Fi に接続するだけ。高速・安全にデータを共有できます。</p>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">📋</div>
@@ -202,13 +217,13 @@
       </div>
       <div class="feature-card">
         <div class="feature-icon">🌐</div>
-        <h3>スマホ ⇄ PC 連携</h3>
-        <p>Android と Windows の間でシームレスに連携。今後 iOS・Mac にも対応予定です。</p>
+        <h3>全プラットフォーム対応</h3>
+        <p>iOS・Android・Windows・Mac のあらゆる組み合わせで共有できます。AirDrop では届かない環境でも使えます。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>インターネット不要</h3>
-        <p>データは LAN 内だけを流れます。外部サーバーへの送信は一切ありません。</p>
+        <div class="feature-icon">🔐</div>
+        <h3>プライバシー保護</h3>
+        <p>データはデバイス間で直接転送されます。外部サーバーへの送信は一切ありません。</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📱</div>
@@ -337,6 +352,29 @@
     <p style="text-align:center; margin-top:24px; color:var(--muted); font-size:.9rem;">
       ※ プレミアムの購入は <strong>Android 版（Google Play）</strong> でのみ行えます。Windows 版では購入できませんが、<a href="#premium">スマホで購入すれば接続中の Windows でもプレミアム機能が使えます</a>。
     </p>
+
+    <div class="plan-compare">
+      <p class="plan-compare-title">機能の詳細比較</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>機能</th>
+              <th>無料</th>
+              <th class="th-premium">プレミアム</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>ファイル転送</td><td>✓</td><td class="td-premium">✓</td></tr>
+            <tr><td>QR / PIN ペアリング</td><td>✓</td><td class="td-premium">✓</td></tr>
+            <tr><td>接続台数</td><td>2台まで</td><td class="td-premium">無制限</td></tr>
+            <tr><td>クリップボード履歴</td><td>10件まで</td><td class="td-premium">無制限</td></tr>
+            <tr><td>クリップボード自動同期</td><td>—</td><td class="td-premium">✓</td></tr>
+            <tr><td>広告表示</td><td>あり</td><td class="td-premium">なし</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -383,7 +421,6 @@
       <div class="dl-card">
         <div class="icon">🪟</div>
         <h3>Windows</h3>
-        <span class="dl-tag">インストール不要</span>
         <ul class="dl-steps">
           <li><span>ZIP をダウンロード</span></li>
           <li><span>右クリック →「すべて展開」で解凍</span></li>
@@ -422,10 +459,6 @@
     <p class="section-sub">購入前の疑問にお答えします。</p>
     <div class="faq-list">
       <details>
-        <summary>Windows 版はインストールが必要ですか？</summary>
-        <p>いいえ。インストールは不要です。ダウンロードした ZIP を解凍し、フォルダ内の <strong>crossshare.exe</strong> をダブルクリックするだけで起動します。フォルダごと好きな場所に置いて使えます。</p>
-      </details>
-      <details>
         <summary>Windows 版でプレミアムを購入できますか？</summary>
         <p>Windows 版では直接購入できません。プレミアムは <strong>Android 版（Google Play）</strong> で購入します。スマホで購入したあと、同じ Wi-Fi で Windows と接続すれば、接続している間 Windows でもプレミアム機能が使えます。</p>
       </details>
@@ -434,8 +467,8 @@
         <p>はい。スマホで購入すれば、そのスマホと接続している全デバイスが、<strong>接続している間だけ</strong>プレミアムになります。接続が切れると、購入していないデバイスは無料プランに戻ります。ただし同じ Wi-Fi に再接続すれば自動でプレミアムが再有効化されるため、再設定の手間はありません。（iOS・Mac 版の公開後は、各デバイスで個別に購入することもできます。）</p>
       </details>
       <details>
-        <summary>インターネット接続は必要ですか？</summary>
-        <p>デバイス間の共有には不要です。同じ Wi-Fi（ローカルネットワーク）につながっていれば、インターネットなしでファイルやクリップボードを共有できます。データが外部サーバーに送られることはありません。</p>
+        <summary>学校や職場の Wi-Fi では使えますか？</summary>
+        <p>大学・会社などの管理されたネットワークでは、同じ Wi-Fi 内でも端末間の直接通信が制限されている場合があります。そのような環境では接続できないことがあります。<br><br>回避策として、<strong>スマートフォンのテザリングに他の端末を接続する</strong>方法が有効です（例：大学の Wi-Fi に繋いだスマートフォンのテザリングに PC を接続するなど）。</p>
       </details>
       <details>
         <summary>無料プランでどこまで使えますか？</summary>

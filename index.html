@@ -190,8 +190,8 @@
     <span class="chip-label">対応:</span>
     <span class="chip available">✓ Android</span>
     <span class="chip available">✓ Windows</span>
-    <span class="chip soon">iOS（近日公開）</span>
-    <span class="chip soon">Mac（近日公開）</span>
+    <span class="chip available">✓ macOS</span>
+    <span class="chip soon">iOS（App Store 近日公開）</span>
   </div>
 </section>
 
@@ -276,7 +276,7 @@
         <div class="pf-card">
           <div class="pf-icon">📱</div>
           <h4>1. スマホで購入</h4>
-          <p>Android 版（Google Play）でプレミアムを購入します。<br><strong>Windows では購入できません。</strong></p>
+          <p>Android 版（Google Play）でプレミアムを購入できます。iOS 版は <strong>App Store 公開後</strong> に購入可能になります。</p>
         </div>
         <div class="pf-card">
           <div class="pf-icon">🔗</div>
@@ -322,7 +322,7 @@
           <li>広告なし</li>
           <li>接続中の全デバイスがプレミアムに</li>
         </ul>
-        <div class="plan-store">※ 購入は Android 版（Google Play）のみ</div>
+        <div class="plan-store">※ 現在の購入は Android 版（Google Play）のみ。iOS・Mac 版は App Store 公開後に購入可能になります</div>
       </div>
       <div class="plan-card">
         <h3>プレミアム 年額</h3>
@@ -334,7 +334,7 @@
           <li>クリップボード自動同期</li>
           <li>広告なし</li>
         </ul>
-        <div class="plan-store">※ 購入は Android 版（Google Play）のみ</div>
+        <div class="plan-store">※ 現在の購入は Android 版（Google Play）のみ。iOS・Mac 版は App Store 公開後に購入可能になります</div>
       </div>
       <div class="plan-card">
         <h3>プレミアム 買い切り</h3>
@@ -346,11 +346,11 @@
           <li>広告なし</li>
           <li>接続中の全デバイスがプレミアムに</li>
         </ul>
-        <div class="plan-store">※ 購入は Android 版（Google Play）のみ</div>
+        <div class="plan-store">※ 現在の購入は Android 版（Google Play）のみ。iOS・Mac 版は App Store 公開後に購入可能になります</div>
       </div>
     </div>
     <p style="text-align:center; margin-top:24px; color:var(--muted); font-size:.9rem;">
-      ※ プレミアムの購入は <strong>Android 版（Google Play）</strong> でのみ行えます。Windows 版では購入できませんが、<a href="#premium">スマホで購入すれば接続中の Windows でもプレミアム機能が使えます</a>。
+      ※ 現在のプレミアム購入は <strong>Android 版（Google Play）</strong> のみです。iOS・Mac 版は <strong>App Store 公開後</strong> に各アプリ内から購入できるようになります。Windows 版では購入できませんが、<a href="#premium">スマホで購入すれば接続中の Windows でもプレミアム機能が使えます</a>。
     </p>
 
     <div class="plan-compare">
@@ -386,7 +386,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>アプリを準備</h3>
-        <p>スマホは Google Play から導入、Windows は ZIP を解凍して <strong>crossshare.exe</strong> を起動するだけ。</p>
+        <p>Android は Google Play、Mac は ZIP を解凍して <strong>CrossShare.app</strong>、Windows は <strong>crossshare.exe</strong> を起動するだけ。</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -405,7 +405,7 @@
 <section id="download">
   <div class="section-inner">
     <h2>ダウンロード</h2>
-    <p class="section-sub">Android・Windows で利用できます。iOS・Mac は近日公開予定です。</p>
+    <p class="section-sub">Android・Windows・macOS で利用できます。iOS は App Store で近日公開予定です。</p>
     <div class="download-grid">
       <div class="dl-card">
         <div class="icon">🤖</div>
@@ -429,25 +429,30 @@
         <a href="crossshare-windows-v1.0.0.zip" class="btn-dl" download>ZIP をダウンロード</a>
       </div>
       <div class="dl-card">
-        <div class="icon">🍎</div>
-        <h3>iOS</h3>
-        <span class="dl-tag">近日公開</span>
-        <a class="btn-dl soon">近日公開</a>
-      </div>
-      <div class="dl-card">
         <div class="icon">💻</div>
         <h3>macOS</h3>
-        <span class="dl-tag">近日公開</span>
-        <a class="btn-dl soon">近日公開</a>
+        <ul class="dl-steps">
+          <li><span>ZIP をダウンロード</span></li>
+          <li><span>解凍して <strong>CrossShare.app</strong> を「アプリケーション」フォルダへ移動</span></li>
+          <li><span>初回は右クリック →「開く」→「開く」で起動</span></li>
+        </ul>
+        <a href="crossshare-mac-v1.0.0.zip" class="btn-dl" download>ZIP をダウンロード</a>
+      </div>
+      <div class="dl-card">
+        <div class="icon">🍎</div>
+        <h3>iOS</h3>
+        <span class="dl-tag">App Store（近日公開）</span>
+        <p style="color:rgba(255,255,255,.65); font-size:.82rem; margin-bottom:18px;">App Store で公開準備中です。公開後は App Store 内から直接インストールできます。</p>
+        <a class="btn-dl soon">App Store（近日公開）</a>
       </div>
     </div>
     <div class="safe-box">
-      <h3>🛡️ Windows の警告表示について（安全です）</h3>
-      <p>CrossShare はデータを外部サーバーに送らない <strong>ローカル動作のアプリ</strong>です。Microsoft の有料署名を付けていないため、初回起動時に「Windows によって PC が保護されました」という青い画面が表示されますが、ウイルスではありません。次の手順で起動できます。</p>
+      <h3>🛡️ Windows / macOS の警告表示について（安全です）</h3>
+      <p>CrossShare はデータを外部サーバーに送らない <strong>ローカル動作のアプリ</strong>です。有料の開発者署名を付けていないため、初回起動時にセキュリティ警告が表示されますが、ウイルスではありません。</p>
       <ul class="safe-steps">
-        <li>① 青い警告画面の <strong>「詳細情報」</strong> をクリック</li>
-        <li>② 下に表示される <strong>「実行」</strong> ボタンをクリック</li>
-        <li>③ 2 回目以降は警告は表示されません</li>
+        <li><strong>【Windows】</strong> 青い警告画面の <strong>「詳細情報」</strong> → <strong>「実行」</strong> をクリック</li>
+        <li><strong>【macOS】</strong> .app を <strong>右クリック →「開く」→「開く」</strong> をクリック</li>
+        <li>いずれも 2 回目以降は警告は表示されません</li>
       </ul>
     </div>
   </div>
@@ -460,7 +465,7 @@
     <div class="faq-list">
       <details>
         <summary>Windows 版でプレミアムを購入できますか？</summary>
-        <p>Windows 版では直接購入できません。プレミアムは <strong>Android 版（Google Play）</strong> で購入します。スマホで購入したあと、同じ Wi-Fi で Windows と接続すれば、接続している間 Windows でもプレミアム機能が使えます。</p>
+        <p>現在の購入は <strong>Android 版（Google Play）</strong> のみです。iOS・Mac 版は <strong>App Store 公開後</strong> に各アプリ内から購入できるようになります。Windows 版では購入できませんが、スマホで購入したあと同じ Wi-Fi で接続すれば、接続している間 Windows でもプレミアム機能が使えます。</p>
       </details>
       <details>
         <summary>1台買えば他のデバイスもプレミアムになりますか？</summary>

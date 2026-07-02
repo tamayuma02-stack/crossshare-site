@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://crossshare.vercel.app/sitemap.xml
